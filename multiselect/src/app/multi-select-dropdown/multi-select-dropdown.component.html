@@ -1,0 +1,17 @@
+<div class="drop-down">
+    <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown">
+        <span *ngIf="checkedList.length <=0">Select</span>
+        <span *ngIf="checkedList.length >0">{{checkedList.join(', ')}}</span>
+        <i class="fa-solid fa-angle-down"></i>
+    </button>
+    <div class="drop-show" *ngIf="showDropDown">
+        <label>
+            <input type="checkbox" [(ngModel)]="showList" (change)="getAllItems()" />
+            <span>All</span>
+        </label>
+        <label *ngFor="let a of list">
+            <input type="checkbox" [(ngModel)]="a.checked" (change)="getSelectedValue(a.checked, a.name)" />
+            <span>{{a.name}}</span>
+        </label>
+    </div>
+</div>
